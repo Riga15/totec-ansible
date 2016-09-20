@@ -1,0 +1,24 @@
+---
+# user
+user_root: root
+user_nginx: vagrant
+user_fpm: vagrant
+
+# php-fpm
+pm_max_children: 16
+pm_start_servers: 8
+pm_min_spare_servers: 4
+pm_max_spare_servers: 8
+
+# opcache
+opcache_memory_consumption: 64
+opcache_max_accelerated_files: 500
+opcache_revalidate_freq: 1
+
+# apcu
+apc_shm_size: 64M
+
+# nginx
+nginx_worker_connections: 1024
+nginx_access_log: /var/log/nginx/access.log
+server_name: vagrant

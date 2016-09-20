@@ -1,0 +1,19 @@
+---
+
+- name: Apply common configuration
+  hosts: all
+
+  roles:
+    - common
+
+- name: Apply webserver configuration
+  hosts: web,vagrant
+
+  roles:
+    - web
+
+- name: Apply dbserver configuration
+  hosts: db,vagrant
+
+  roles:
+    - db
