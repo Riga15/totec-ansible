@@ -1,6 +1,6 @@
 # Totec Ansible
 
-# Insallation
+## Installation
 
 ```bash
 $ brew install homebrew/versions/ansible19
