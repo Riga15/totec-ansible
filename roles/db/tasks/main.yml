@@ -1,1 +1,43 @@
 ---
+
+- name: Install mysql-python
+  yum: name=MySQL-python state=installed
+  sudo: Yes
+
+- name: Install mysql57 repo
+  yum: name=http://dev.mysql.com/get/mysql57-community-release-el6-7.noarch.rpm state=present
+  sudo: Yes
+
+- name: Install mysql57
+  yum: name=mysql-community-server state=installed
+  sudo: Yes
+
+- name: Put my.cnf
+  template: src=my.cnf dest=/etc/my.cnf
+  sudo: Yes
+  register: mycnf
+
+- name: Start mysql57
+  service: name=mysqld state=started enabled=yes
+  sudo: Yes
+  when: not mycnf.changed
+
+- name: Restart mysql57
+  service: name=mysqld state=restarted enabled=yes
+  sudo: Yes
+  when: mycnf.changed
+
+- name: Save tmp password
+  script: save_tmp_password.sh creates=/root/.tmp.my.cnf
+  sudo: Yes
+
+- name: Change password
+  script: change_password.sh creates=/root/.my.cnf
+  sudo: Yes
+
+- name: Create databases
+  mysql_db: name={{item}} login_host={{host_mysql}} login_user={{user_mysql_admin}} login_password={{password_mysql_admin}} state=present
+  with_items:
+      - db01
+      - db02
+      - test

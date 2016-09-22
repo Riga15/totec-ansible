@@ -3,12 +3,21 @@
 user_root: root
 user_nginx: vagrant
 user_fpm: vagrant
+user_mysql_admin: root
+user_mysql_app: totec
+
+# password
+password_mysql_admin: Root123$
+password_mysql_app: Totec123$
+
+# host
+host_mysql: localhost
 
 # php-fpm
-pm_max_children: 16
-pm_start_servers: 8
-pm_min_spare_servers: 4
-pm_max_spare_servers: 8
+pm_max_children: 8
+pm_start_servers: 4
+pm_min_spare_servers: 2
+pm_max_spare_servers: 4
 
 # opcache
 opcache_memory_consumption: 64
@@ -22,3 +31,19 @@ apc_shm_size: 64M
 nginx_worker_connections: 1024
 nginx_access_log: /var/log/nginx/access.log
 server_name: vagrant
+
+# mysql
+mysql_innodb_buffer_pool_size: 256M
+mysql_innodb_log_buffer_size: 8M
+mysql_join_buffer_size: 16K
+mysql_max_allowed_packet: 4M
+mysql_read_buffer_size: 16K
+mysql_read_rnd_buffer_size: 512K
+mysql_sort_buffer_size: 512M
+mysql_query_cache_limit: 1M
+mysql_query_cache_size: 64M
+mysql_query_cache_type: 1
+mysql_max_connections: 100
+mysql_max_heap_table_size: 256M
+mysql_default_character_set: utf8mb4
+mysql_long_query_time: 0.1
