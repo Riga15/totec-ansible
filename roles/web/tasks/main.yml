@@ -38,6 +38,10 @@
   yum: name=nginx enablerepo=epel state=present
   sudo: Yes
 
+- name: Put php.ini
+  template: src=php.ini dest=/etc/php.ini
+  sudo: Yes
+
 - name: Put php-fpm.conf
   template: src=php-fpm.conf dest=/etc/php-fpm.d/www.conf
   sudo: Yes
