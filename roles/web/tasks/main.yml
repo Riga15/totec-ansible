@@ -28,7 +28,7 @@
     - php70w-pecl-apcu-5.1.3
     - php70w-opcache
     - php70w-pdo
-    - php70w-mysql
+    - php70w-mysqlnd
     - php70w-pecl-redis
     - pcre-devel
     - gcc
