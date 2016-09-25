@@ -31,6 +31,7 @@ apc_shm_size: 64M
 nginx_worker_connections: 1024
 nginx_access_log: /var/log/nginx/access.log
 server_name: vagrant
+app_env: vagrant
 
 # mysql
 mysql_innodb_buffer_pool_size: 256M
